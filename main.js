@@ -177,7 +177,9 @@ function displayMatches(requied, optional) {
 
 if (sessionStorage.length == 0) {
   console.log('Loading words');
-  await storeWords();
+  (async function() {
+    await storeWords();
+  }());
 } else {
   console.log('Words already loaded');
 }
