@@ -7,7 +7,20 @@
     <title>Spelling Bee</title>
   </head>
   <body>
-    <div id="app">Hello
+    <div id="app">
+      <h1 class="title">
+        Spelling Bee Search
+      </h1>
+      <div id="input-container">
+        <input class="hive-cell" type="text" maxlength="1" name="required">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="0">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="1">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="2">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="3">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="4">
+        <input class="hive-cell" type="text" maxlength="1" name="optional" optionalnum="5">
+      </div>
+      <!-- <svg class="hive-cell outer" viewBox="0 0 120 103.92304845413263"><polygon class="cell-fill" points="0,51.96152422706631 30,0 90,0 120,51.96152422706631 90,103.92304845413263 30,103.92304845413263" stroke="white" stroke-width="7.5"></polygon><text class="cell-letter" x="50%" y="50%" dy="0.35em">m</text></svg> -->
       <div id="results"></div>
     </div>
     <script type="module" src="/main.js"></script>
