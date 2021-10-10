@@ -4,41 +4,29 @@ import './style.css'
 // TODO: logic for when to fire search needs to be improved
 // TODO: generate input fields dynamically
 
+const WORD_LIST_URL = 'https://raw.githubusercontent.com/tg2648/spelling-bee-solver/main/wordlist/spelling-bee-dictionary.txt';
+const MIN_LENGTH = 3;
+const OPTIONAL_LENGTH = 6;
+const REQUIRED_LENGTH = 1;
+
+let wordsString;
+
 /**
  * Fetches data as text from URL
  */
  async function fetchText(url) {
   try {
     const response = await fetch(url);
-    const data = await response.text();
-    return data;
+    wordsString = await response.text();
   } catch (error) {
     console.error(error);
   }
 }
 
-/**
- * Stores word string in local storage
- */
-async function storeWords() {
-  const wordsStr = await fetchText(WORD_LIST_URL);
-  sessionStorage.setItem('words', wordsStr);
-}
+(async function() {
+  await fetchText(WORD_LIST_URL);
+}());
 
-if (sessionStorage.length == 0) {
-  console.log('Loading words');
-  (async function() {
-    await storeWords();
-  }());
-} else {
-  console.log('Words already loaded');
-}
-
-
-const WORD_LIST_URL = 'https://raw.githubusercontent.com/tg2648/spelling-bee-solver/main/wordlist/spelling-bee-dictionary.txt';
-const MIN_LENGTH = 3;
-const OPTIONAL_LENGTH = 6;
-const REQUIRED_LENGTH = 1;
 
 function createEmptyArray(len) {
   let arr = [];
@@ -124,8 +112,8 @@ for (let i = 0; i< inputs.length; i++) {
  * Retrieves word string from localStorage and splits by newline
  */
  function getWordsArray() {
-  const wordsStr = sessionStorage.getItem('words');
-  return wordsStr.split('\n');
+  // const wordsStr = sessionStorage.getItem('words');
+  return wordsString.split('\n');
 }
 
 /**
